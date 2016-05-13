@@ -50,6 +50,7 @@ export default class Logo extends React.Component {
     );
   }
 }
+```
 
 ## Contributions & Issues
 Contributions are welcome. Please clearly explain the purpose of the PR and follow the current style.
