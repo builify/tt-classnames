@@ -1,7 +1,7 @@
 {
   "name": "tt-classnames",
   "version": "1.0.0",
-  "description": "",
+  "description": "README.md",
   "main": "dist/index.js",
   "directories": {
     "test": "test"
@@ -10,8 +10,19 @@
     "precommit": "npm test && npm run build",
     "build": "rimraf dist && webpack --no-minimize && webpack",
     "test": "mocha --compilers js:babel-register --recursive --bail",
-    "tdd": "npm run test -- --watch"
+    "tdd": "npm run test -- --watch",
+    "coverage": "babel-node node_modules/isparta/bin/isparta cover node_modules/mocha/bin/_mocha --report lcovonly -- -R spec",
+    "coveralls": "npm run coverage && coveralls < coverage/lcov.info && rimraf coverage"
   },
+  "files": [
+    "dist",
+    "source"
+  ],
+  "keywords": [
+    "classnames",
+    "react",
+    "trip-trax"
+  ],
   "engines": {
     "node": ">=6.1.0",
     "npm": ">=3.8.6"
@@ -27,6 +38,8 @@
   },
   "homepage": "https://github.com/Trip-Trax/tt-classnames#readme",
   "devDependencies": {
+    "babel": "^6.5.2",
+    "babel-cli": "^6.8.0",
     "babel-core": "^6.8.0",
     "babel-eslint": "^6.0.4",
     "babel-loader": "^6.2.4",
