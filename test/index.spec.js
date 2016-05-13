@@ -10,6 +10,10 @@ describe('TTClassNames', () => {
     expect(classNames, 'to be defined');
   });
 
+  it('should return function', () => {
+    expect(classNames, 'to be a', 'function');
+  });
+
   describe('return values', () => {
     it('should return correct classname', () => {
       expect(classNames('test'), 'to be', 'tt__test');
