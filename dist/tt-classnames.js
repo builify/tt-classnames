@@ -63,6 +63,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	exports.default = function (options) {
 	  return function () {
 	    var rootName = options.name || null;
+	    var prefix = options.prefix || null;
 	    var classNames = [];
 
 	    var _iteratorNormalCompletion = true;
@@ -103,6 +104,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    if (rootName !== null) {
 	      classNames = classNames.map(function (cn) {
 	        return rootName + '__' + cn;
+	      });
+	    } else if (prefix !== null) {
+	      classNames = classNames.map(function (cn) {
+	        return prefix + '-' + cn;
 	      });
 	    }
 

@@ -26,6 +26,7 @@ function isArray (value) {
 export default function (options) {
   return function () {
     const rootName = options.name || null;
+    const prefix = options.prefix || null;
     var classNames = [];
 
     for (let arg of arguments) {
@@ -42,6 +43,8 @@ export default function (options) {
 
     if (rootName !== null) {
       classNames = classNames.map((cn) => `${rootName}__${cn}`);
+    } else if (prefix !== null) {
+      classNames = classNames.map((cn) => `${prefix}-${cn}`);
     }
 
     return classNames.join(' ');
