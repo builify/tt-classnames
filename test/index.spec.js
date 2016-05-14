@@ -14,7 +14,7 @@ describe('TTClassNames', () => {
     expect(classNames, 'to be a', 'function');
   });
 
-  describe('name', () => {
+  describe('classNames', () => {
     it('should return correct classname', () => {
       expect(classNames('test'), 'to be', 'tt__test');
 
@@ -27,7 +27,7 @@ describe('TTClassNames', () => {
 
       expect(classNames('test', 123, ['what'], {
         'trip-trax': true
-      }), 'to be', 'tt__test tt__123 tt__what tt__trip-trax');
+      }), 'to be', 'tt__test 123 what trip-trax');
     });
   });
 
@@ -48,7 +48,7 @@ describe('TTClassNames', () => {
 
       expect(cn('test', 123, ['what'], {
         'trip-trax': true
-      }), 'to be', 'tt-test tt-123 tt-what tt-trip-trax');
+      }), 'to be', 'tt-test 123 what trip-trax');
     });
   });
 });

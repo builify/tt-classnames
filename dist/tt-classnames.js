@@ -66,56 +66,29 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var prefix = options.prefix || null;
 	    var classNames = [];
 
-	    var _iteratorNormalCompletion = true;
-	    var _didIteratorError = false;
-	    var _iteratorError = undefined;
+	    for (var i = 0; i < arguments.length; i++) {
+	      var arg = arguments[i];
 
-	    try {
-	      for (var _iterator = arguments[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-	        var arg = _step.value;
-
-	        if (isString(arg) || isNumber(arg)) {
-	          classNames.push(arg);
-	        } else if (isObject(arg)) {
-	          for (var key in arg) {
-	            arg.hasOwnProperty(key) && arg[key] && classNames.push(key);
+	      if (isString(arg) || isNumber(arg)) {
+	        classNames.push(i === 0 ? normalizeArg(arg, rootName, prefix) : arg);
+	      } else if (isObject(arg)) {
+	        for (var key in arg) {
+	          if (arg.hasOwnProperty(key) && arg[key]) {
+	            classNames.push(i === 0 ? normalizeArg(key, rootName, prefix) : key);
 	          }
-	        } else if (isArray(arg)) {
-	          var _classNames;
+	        }
+	      } else if (isArray(arg)) {
+	        for (var j = 0; j < arg.length; j++) {
+	          var secArg = arg[j];
 
-	          (_classNames = classNames).push.apply(_classNames, _toConsumableArray(arg));
+	          classNames.push(i === 0 ? normalizeArg(secArg, rootName, prefix) : secArg);
 	        }
 	      }
-	    } catch (err) {
-	      _didIteratorError = true;
-	      _iteratorError = err;
-	    } finally {
-	      try {
-	        if (!_iteratorNormalCompletion && _iterator.return) {
-	          _iterator.return();
-	        }
-	      } finally {
-	        if (_didIteratorError) {
-	          throw _iteratorError;
-	        }
-	      }
-	    }
-
-	    if (rootName !== null) {
-	      classNames = classNames.map(function (cn) {
-	        return rootName + '__' + cn;
-	      });
-	    } else if (prefix !== null) {
-	      classNames = classNames.map(function (cn) {
-	        return prefix + '-' + cn;
-	      });
 	    }
 
 	    return classNames.join(' ');
 	  };
 	};
-
-	function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
 	var TYPE_ARRAY = '[object Array]';
 	var TYPE_STRING = '[object String]';
@@ -140,6 +113,16 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	function isArray(value) {
 	  return !!(getType(value) === TYPE_ARRAY);
+	}
+
+	function normalizeArg(arg, rootName, prefix) {
+	  if (rootName !== null) {
+	    arg = rootName + '__' + arg;
+	  } else if (prefix !== null) {
+	    arg = prefix + '-' + arg;
+	  }
+
+	  return arg;
 	}
 
 /***/ }
