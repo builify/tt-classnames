@@ -100,9 +100,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	      }
 	    }
 
-	    classNames = classNames.map(function (cn) {
-	      return rootName + '__' + cn;
-	    });
+	    if (rootName !== null) {
+	      classNames = classNames.map(function (cn) {
+	        return rootName + '__' + cn;
+	      });
+	    }
 
 	    return classNames.join(' ');
 	  };

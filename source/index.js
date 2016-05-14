@@ -40,7 +40,9 @@ export default function (options) {
       }
     }
 
-    classNames = classNames.map((cn) => `${rootName}__${cn}`);
+    if (rootName !== null) {
+      classNames = classNames.map((cn) => `${rootName}__${cn}`);
+    }
 
     return classNames.join(' ');
   };

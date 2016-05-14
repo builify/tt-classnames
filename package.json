@@ -1,8 +1,8 @@
 {
   "name": "tt-classnames",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "README.md",
-  "main": "dist/index.js",
+  "main": "dist/tt-classnames.js",
   "directories": {
     "test": "test"
   },
