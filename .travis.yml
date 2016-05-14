@@ -9,6 +9,7 @@ node_js:
   - 'stable'
   - '6'
   - '5'
+
 branches:
   except:
     - "/^v\\d+\\.\\d+\\.\\d+$/"
